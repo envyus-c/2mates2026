@@ -1,0 +1,356 @@
+// 2 Mates — main stylesheet
+// Bootstrap 5 (customized via variables) + site-specific SCSS
+
+@import "variables";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+@import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/helpers";
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// ---------------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------------
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $black;
+  overflow-x: hidden;
+  padding-top: 47px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Flex/grid columns must be able to shrink below their content's
+// intrinsic min-content size, otherwise long text forces horizontal
+// overflow on narrow viewports (a well-known Bootstrap flex-grid gotcha).
+.row > * {
+  min-width: 0;
+}
+
+.text-grey {
+  color: $grey-text;
+}
+
+.rule {
+  height: 2px;
+  width: 100%;
+  background-color: $white;
+  border: 0;
+  margin: 1.75rem 0;
+}
+
+// ---------------------------------------------------------------------------
+// Header
+// ---------------------------------------------------------------------------
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  padding: 0;
+
+  .logo-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: $white;
+    padding: 1rem 1.8rem;
+
+    img {
+      height: 84px;
+      width: auto;
+      display: block;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Hero
+// ---------------------------------------------------------------------------
+
+// #top wraps the hero + enquiries sections; it's the positioning context
+// for the desktop floating bottle layer below, so that layer's height
+// always matches "hero + enquiries" combined, letting the image's base
+// anchor exactly to the bottom of the white band.
+#top {
+  position: relative;
+}
+
+.hero-bottle-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+// Single, explicit height hop (100% of hero-bottle-layer, which itself has
+// a definite height via inset:0) — deliberately avoids stacking this through
+// a row/col flex-stretch chain, which some browsers resolve inconsistently
+// when the ancestor's own height comes from absolute positioning rather
+// than a literal length.
+.hero-bottle-container {
+  position: relative;
+  height: 100%;
+}
+
+.hero-bottle-img {
+  // No top/height: the image sizes itself naturally from `width` alone
+  // (auto height, preserving its intrinsic aspect ratio), so nothing here
+  // depends on percentage/inherited height resolution at all. `bottom: 0`
+  // pins the base to the container's bottom; whatever extends above the
+  // container's top is simply clipped by .hero-bottle-layer's overflow: hidden.
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(41.6667% - 1rem); // ~col-lg-5, minus half the grid gutter
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+
+.hero {
+  background-color: $black;
+  padding-bottom: 3rem;
+
+  .hero-bottle {
+    // Full-bleed: breaks out of the column/container padding so this spans
+    // the true viewport width with no side margin, regardless of gutters.
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    overflow: hidden;
+    height: 45vw;
+    min-height: 220px;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 33.75vw;
+      height: 100vw;
+      max-width: none;
+      transform: translate(-50%, -50%) rotate(-90deg);
+      object-fit: cover;
+      object-position: center bottom;
+      display: block;
+    }
+  }
+
+  .hero-content {
+    padding-top: 1rem;
+
+    .era {
+      margin-bottom: 1.75rem;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      h2 {
+        font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+        letter-spacing: 0.02em;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: $grey-text;
+        max-width: 34rem;
+        margin-bottom: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+
+    .eyebrow {
+      font-family: $font-display;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .headline {
+      font-size: clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      margin-bottom: 0;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Enquiries band
+// ---------------------------------------------------------------------------
+
+.enquiries {
+  background-color: $white;
+  color: $black;
+  padding: 2rem 0;
+
+  h3 {
+    color: $black;
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+
+  p {
+    margin-bottom: 0;
+
+    a {
+      color: $black;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Footer
+// ---------------------------------------------------------------------------
+
+.site-footer {
+  background-color: $black;
+  padding: 2.5rem 0;
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    text-align: left;
+  }
+
+  .footer-logo {
+    flex: 0 0 auto;
+    height: 64px;
+    width: auto;
+  }
+
+  .footer-divider {
+    flex: 0 0 auto;
+    width: 1px;
+    align-self: stretch;
+    background-color: $grey-line;
+  }
+
+  .footer-quote {
+    flex: 0 1 auto;
+    min-width: 0;
+
+    p {
+      font-style: italic;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    cite {
+      display: block;
+      font-style: normal;
+      color: $grey-text;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Responsive tweaks (mobile view from Figma)
+// ---------------------------------------------------------------------------
+
+@include media-breakpoint-up(lg) {
+  .hero {
+    // The bottle is no longer in this column at lg+ (it's floating in
+    // .hero-bottle-layer instead), so this just governs the text side.
+    padding-bottom: 0;
+  }
+
+  .hero .row {
+    min-height: 85vh;
+  }
+
+  .hero .hero-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 3rem;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  // Behave like .container-fluid below the mobile/tablet breakpoint —
+  // full width with just the gutter padding, no centered max-width.
+  .container {
+    max-width: none;
+  }
+
+  // Desktop deliberately lets the absolutely-positioned header overlap the
+  // top of the (very tall) bottle image — but on mobile the bottle sits in
+  // a short band right at the top, so the same overlap would run straight
+  // through the label. Push content below the header's full height instead.
+  body {
+    padding-top: 156px;
+  }
+
+  .hero {
+    text-align: left;
+
+    .hero-content .headline {
+      font-size: clamp(2rem, 1.5rem + 4vw, 2.75rem);
+    }
+  }
+
+  .footer-inner {
+    gap: 1.25rem;
+  }
+
+  .footer-logo {
+    height: 48px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .footer-inner {
+    flex-wrap: wrap;
+  }
+
+  .footer-quote {
+    flex-basis: 100%;
+    padding-top: 0.75rem;
+    border-top: 1px solid $grey-line;
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+}

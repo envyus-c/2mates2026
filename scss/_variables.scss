@@ -1,0 +1,38 @@
+// 2 Mates — brand variables / Bootstrap overrides
+
+// Brand palette
+$black:        #000000;
+$off-black:    #0a0a0a;
+$white:        #ffffff;
+$grey-line:    rgba(255, 255, 255, 0.35);
+$grey-text:    #b3b3b3;
+
+// Bootstrap color overrides
+$primary:      $white;
+$dark:         $black;
+$light:        $white;
+$body-bg:      $black;
+$body-color:   $white;
+$link-color:   $white;
+$link-hover-color: $grey-text;
+
+// Fonts
+$font-display: "Oswald", "Arial Narrow", sans-serif;
+$font-body:    "Jost", "Helvetica Neue", Arial, sans-serif;
+
+$font-family-base: $font-body;
+$headings-font-family: $font-display;
+$headings-font-weight: 600;
+$headings-color: $white;
+
+// Layout
+$grid-gutter-width: 2rem;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1280px
+);
+
+$enable-negative-margins: true;

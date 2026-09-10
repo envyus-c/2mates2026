@@ -1,0 +1,19 @@
+{
+  "name": "2mates",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass scss/style.scss css/style.css --no-source-map",
+    "watch": "sass scss/style.scss css/style.css --no-source-map --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8"
+  },
+  "devDependencies": {
+    "sass": "^1.69.5"
+  }
+}
