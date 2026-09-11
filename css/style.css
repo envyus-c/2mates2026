@@ -7779,11 +7779,12 @@ img {
 }
 
 .rule {
-  height: 2px;
+  height: 1px;
   width: 100%;
   background-color: #ffffff;
   border: 0;
   margin: 1.75rem 0;
+  opacity: 1;
 }
 
 .site-header {
@@ -7877,18 +7878,18 @@ img {
   margin-bottom: 0.5rem;
 }
 .hero .hero-content .era p {
-  color: #b3b3b3;
+  color: #fff;
   max-width: 34rem;
   margin-bottom: 0;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.3;
+  font-size: 1.2rem;
 }
 .hero .hero-content .eyebrow {
   font-family: "Oswald", "Arial Narrow", sans-serif;
-  text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 0.03em;
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   margin-bottom: 0.25rem;
 }
 .hero .hero-content .headline {
