@@ -7873,13 +7873,12 @@ img {
   margin-bottom: 0;
 }
 .hero .hero-content .era h2, .hero .hero-content .era .h2 {
-  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+  font-size: clamp(3.75rem, 1.4rem + 1.2vw, 3.25rem);
   letter-spacing: 0.02em;
   margin-bottom: 0.5rem;
 }
 .hero .hero-content .era p {
   color: #fff;
-  max-width: 34rem;
   margin-bottom: 0;
   font-size: 0.95rem;
   line-height: 1.3;
@@ -7975,7 +7974,7 @@ img {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: end;
     padding-bottom: 3rem;
   }
 }
@@ -7992,6 +7991,13 @@ img {
   .hero .hero-content .headline {
     font-size: clamp(2rem, 1.5rem + 4vw, 2.75rem);
   }
+}
+@media (max-width: 991.98px) and (max-width: 575.98px) {
+  .hero-content .headline .believe {
+    font-size: clamp(4rem, 1.5rem + 4vw, 2.75rem);
+  }
+}
+@media (max-width: 991.98px) {
   .footer-inner {
     gap: 1.25rem;
   }
